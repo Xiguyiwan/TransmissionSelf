@@ -4,9 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 
-public class TriggerInterectionSystem : MonoBehaviour
-{
-
+public class SimpleMC : MonoBehaviour {
     //A boolean that flags whether there's a connected microphone  
     private bool micConnected = false;
 
@@ -18,21 +16,10 @@ public class TriggerInterectionSystem : MonoBehaviour
     //A handle to the attached AudioSource  
     private AudioSource goAudioSource;
 
-
-    public GameObject mentu;//我们的门徒
-    Collider collider;
-
-    //Use this for initialization 
-
-    private void Awake()
-    {
-        //mentu = GameObject.FindGameObjectsWithTag("MenTu");//找一找门徒们在我们场景里
-        //collider = mentu.GetComponent<Collider>();
-    }
-
+    //Use this for initialization  
     void Start()
     {
-        foreach (string shebei in Microphone.devices)
+        foreach(string shebei in Microphone.devices)
         {
             Debug.Log("Name: " + shebei);
         }
@@ -64,11 +51,10 @@ public class TriggerInterectionSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
 
-
-
+        
     }
-    
     void OnGUI()
     {
         //If there is a microphone  
@@ -105,73 +91,7 @@ public class TriggerInterectionSystem : MonoBehaviour
         }
 
 
-
-
-    }
-
-    //when Player touch Mentu, the controller's color change to something new color.
-    private void OnTriggerEnter(Collider collider)
-    {
-        //If there is a microphone  
-        if (micConnected)
-        {
-            //If the audio from any microphone isn't being captured  
-            //when Player touch record-button, the controller's color change again to something new color.
-            if (!Microphone.IsRecording(null))
-            {
-                goAudioSource.clip = Microphone.Start(null, true, 20, maxFreq);
-                // if ButtonDown start microphone.
-            }
-
-        }
-        else // No microphone  
-        {
-            //Print a red "Microphone not connected!" message at the center of the screen  
-            GUI.contentColor = Color.red;
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 25, 200, 50), "Microphone not connected!");
-        }
+       
 
     }
-    private void OnTriggerExit(Collider collider)
-    {
-        Microphone.End(null); //Stop the audio recording  
-        goAudioSource.Play(); //Playback the recorded audio 
-        Debug.Log("sound is playing");
-    }
-
-
-
-
-
-
-
-
-
-    //when Player touch Mentu, the controller's color change to something new color.
-    public void MicrophoneStartRecord()
-    {
-        //If there is a microphone  
-        if (micConnected)
-        {
-            //If the audio from any microphone isn't being captured  
-            //when Player touch record-button, the controller's color change again to something new color.
-            if (!Microphone.IsRecording(null))
-            {
-                
-                mentu.GetComponent<AudioSource>().clip = Microphone.Start(null, true, 20, maxFreq);
-                //mentu.= Microphone.Start(null, true, 20, maxFreq);
-                // if ButtonDown start microphone.
-            }
-
-        }
-        else // No microphone  
-        {
-            //Print a red "Microphone not connected!" message at the center of the screen  
-            GUI.contentColor = Color.red;
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 25, 200, 50), "Microphone not connected!");
-        }
-    }
-
-    
-
 }
