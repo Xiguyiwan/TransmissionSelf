@@ -17,18 +17,36 @@ public class MentuBehavior : MonoBehaviour
     //A handle to the attached AudioSource  
     public AudioSource goAudioSource;
 
+    /// <summary>
+    /// player's body
+    /// </summary>
     public GameObject leftPlayerInterection;
     public GameObject rightPlayerInterection;
-    GameObject NoticeGestureRecording;
+    public GameObject HeadPlayerInterection;
+
+    /// <summary>
+    /// Mentu's body
+    /// </summary>
+    public GameObject leftMentu;
+    public GameObject rightMentu;
+    public GameObject HeadMentu;
+
+
+    public GameObject NoticeGestureRecording;//UI notice recording motion gesture
+    bool recordingGesture;
 
     Material m_Material;
     private double nextEventTime;
     float timeOfClip;
 
+
+    int b = 1;//counter of frame for recording motion gesture
+
     // Use this for initialization
     void Start()
     {
-
+        recordingGesture = false;
+        NoticeGestureRecording.SetActive(false);//UI notice recording motion gesture
         m_Material = GetComponent<Renderer>().material;
 
         foreach (string shebei in Microphone.devices)
@@ -65,10 +83,57 @@ public class MentuBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (recordingGesture == true)
+        {
+            //do
+            //{
+
+
+            //    float[,] positionLHand = new float[b, 3];
+            //    positionLHand[b,0] = leftPlayerInterection.GetComponent<Transform>().position.x;
+            //    Debug.Log("X: " + positionLHand[b, 0]);
+
+            //    positionLHand[b,1] = leftPlayerInterection.GetComponent<Transform>().position.y;
+            //    Debug.Log("Y: " + positionLHand[b, 1]);
+            //    positionLHand[b,2] = leftPlayerInterection.GetComponent<Transform>().position.z;
+            //    Debug.Log("Z: " + positionLHand[b, 2]);
+
+            //    b++;
+            //} while (recordingGesture == false);
+
+            float[,] positionLHand = new float[b, 3];
+            for (int i = 0; i < b; i++)
+            {
+
+                positionLHand[i, 0] = leftPlayerInterection.GetComponent<Transform>().position.x;
+                Debug.Log("X: " + positionLHand[i, 0]+" * "+ i);
+
+                positionLHand[i, 1] = leftPlayerInterection.GetComponent<Transform>().position.y;
+                Debug.Log("Y: " + positionLHand[i, 1] + " * " + i);
+                positionLHand[i, 2] = leftPlayerInterection.GetComponent<Transform>().position.z;
+                Debug.Log("Z: " + positionLHand[i, 2] + " * " + i);
+            }
+            b++;
+            //ArrayOfGesture();
+
+        }
+        
 
     }
 
+    void ArrayOfGesture()
+    {
+        float[,] positionLHand = new float[b, 3];
+        positionLHand[b, 0] = leftPlayerInterection.GetComponent<Transform>().position.x;
+        Debug.Log("X: " + positionLHand[b, 0]);
 
+        positionLHand[b, 1] = leftPlayerInterection.GetComponent<Transform>().position.y;
+        Debug.Log("Y: " + positionLHand[b, 1]);
+        positionLHand[b, 2] = leftPlayerInterection.GetComponent<Transform>().position.z;
+        Debug.Log("Z: " + positionLHand[b, 2]);
+
+        b++;
+    }
     private void OnTriggerEnter(Collider collider)
     {
         //If there is a microphone  
@@ -133,8 +198,13 @@ public class MentuBehavior : MonoBehaviour
         }
         else Debug.Log("Microphone not recording now");
 
-
-        this.goAudioSource.Play(); //Playback the recorded audio
+        NoticeGestureRecording.SetActive(true);//UI notice recording motion gesture
+        recordingGesture = true;
+        yield return new WaitForSeconds(3);//time for recording motion gesture
+        recordingGesture = false;
+        NoticeGestureRecording.SetActive(false);//UI notice recording motion gesture
+        yield return new WaitForSeconds(0.5f);
+        this.goAudioSource.Play(); //Play the recorded audio
         Debug.Log(goAudioSource.time);// curent time position
         nextEventTime = 0;
         Debug.Log("sound is playing");

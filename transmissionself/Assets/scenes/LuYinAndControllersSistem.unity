@@ -721,7 +721,7 @@ Prefab:
     - target: {fileID: 224000013127654674, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 236.5
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 224000013127654674, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -1126,7 +1126,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -236.5
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 224000012484682510, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -2157,6 +2157,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 752656960}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &855979031 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1217539232609964, guid: 23e684ea96eff0541a3849889fe460b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1993727909}
 --- !u!1 &929885766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2930,6 +2935,26 @@ Prefab:
       propertyPath: rolloffCustomCurve.m_RotationOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114417702014661598, guid: 59aa0613670e01f4894866be70a95df4,
+        type: 2}
+      propertyPath: leftPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973196}
+    - target: {fileID: 114417702014661598, guid: 59aa0613670e01f4894866be70a95df4,
+        type: 2}
+      propertyPath: rightPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973195}
+    - target: {fileID: 114417702014661598, guid: 59aa0613670e01f4894866be70a95df4,
+        type: 2}
+      propertyPath: HeadPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973194}
+    - target: {fileID: 114417702014661598, guid: 59aa0613670e01f4894866be70a95df4,
+        type: 2}
+      propertyPath: NoticeGestureRecording
+      value: 
+      objectReference: {fileID: 2041787790}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59aa0613670e01f4894866be70a95df4, type: 2}
   m_IsPrefabParent: 0
@@ -2945,6 +2970,11 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634225466}
   m_Enabled: 1
+--- !u!1 &1656059408 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1568105862250022, guid: 23e684ea96eff0541a3849889fe460b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1993727909}
 --- !u!1 &1687350335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,6 +3320,21 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1760973187}
   m_Script: {fileID: 11500000, guid: eeda6d41317f444b900e374895f14e95, type: 3}
+--- !u!1 &1760973194 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000011840228368, guid: 41c0760bd81dd084283814f0c432b466,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760973187}
+--- !u!1 &1760973195 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000013731061326, guid: 41c0760bd81dd084283814f0c432b466,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760973187}
+--- !u!1 &1760973196 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1000010636551700, guid: 41c0760bd81dd084283814f0c432b466,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760973187}
 --- !u!1 &1771587010
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,6 +3409,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1771587010}
+--- !u!1 &1777273833 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1262101908827370, guid: 23e684ea96eff0541a3849889fe460b1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1993727909}
 --- !u!1 &1794127488
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,7 +3907,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4644698110407780, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.02
+      value: 1.196
       objectReference: {fileID: 0}
     - target: {fileID: 4644698110407780, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
       propertyPath: m_LocalPosition.z
@@ -3883,59 +3933,56 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1439040423152282, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
         type: 2}
-      propertyPath: m_PlayOnAwake
+      propertyPath: leftPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973196}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: rightPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973195}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: HeadPlayerInterection
+      value: 
+      objectReference: {fileID: 1760973194}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: NoticeGestureRecording
+      value: 
+      objectReference: {fileID: 2041787790}
+    - target: {fileID: 1568105862250022, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
+      propertyPath: m_Name
+      value: LeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: rightMentu
+      value: 
+      objectReference: {fileID: 1777273833}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: HeadMentu
+      value: 
+      objectReference: {fileID: 855979031}
+    - target: {fileID: 114540686037395310, guid: 23e684ea96eff0541a3849889fe460b1,
+        type: 2}
+      propertyPath: leftMentu
+      value: 
+      objectReference: {fileID: 1656059408}
+    - target: {fileID: 4283269041101416, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 23833728469080794, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f6b79fa6d2594ef4d8057d4fafc06287, type: 2}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffMode
+    - target: {fileID: 4689696644517364, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
+      propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[0].time
-      value: 0.002
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].value
-      value: 0.303833
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].inSlope
-      value: -1.002004
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].outSlope
-      value: -1.002004
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_RotationOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82188930797335658, guid: 23e684ea96eff0541a3849889fe460b1,
-        type: 2}
-      propertyPath: rolloffCustomCurve.m_Curve.Array.data[1].time
-      value: 0.99050903
+    - target: {fileID: 4798745352307356, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23e684ea96eff0541a3849889fe460b1, type: 2}
