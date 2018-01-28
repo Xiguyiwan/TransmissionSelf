@@ -20,7 +20,7 @@ public class MentuBehavior : MonoBehaviour
     /// <summary>
     /// player's body
     /// </summary>
-    public GameObject leftPlayerInterection;
+    public GameObject left;
     public GameObject rightPlayerInterection;
     public GameObject HeadPlayerInterection;
 
@@ -34,18 +34,31 @@ public class MentuBehavior : MonoBehaviour
 
     public GameObject NoticeGestureRecording;//UI notice recording motion gesture
     bool recordingGesture;
+    bool HaveRecordGesture;
+    bool countdown;//Comparison of the length of the array and the current frame transmitted to the objects of the Mentus
+    int curentFrame;//current frame transmitted to the objects of the Mentus
+
+    float[,] positionLHand;
+
 
     Material m_Material;
     private double nextEventTime;
     float timeOfClip;
+    float[] posX;
+    float[] posY;
+    float[] posZ;
 
 
-    int b = 1;//counter of frame for recording motion gesture
+    int b;//counter of frame for recording motion gesture
 
     // Use this for initialization
     void Start()
     {
         recordingGesture = false;
+        HaveRecordGesture = false;
+        float[,] positionLHand = new float[b, 3];
+        curentFrame = 0;
+        b = 1;//counter of frame for recording motion gesture
         NoticeGestureRecording.SetActive(false);//UI notice recording motion gesture
         m_Material = GetComponent<Renderer>().material;
 
@@ -83,8 +96,11 @@ public class MentuBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //test = leftPlayerInterection.GetComponent<Transform>().position.x;
+        //Debug.Log(test);
         if (recordingGesture == true)
         {
+
             //do
             //{
 
@@ -101,39 +117,77 @@ public class MentuBehavior : MonoBehaviour
             //    b++;
             //} while (recordingGesture == false);
 
-            float[,] positionLHand = new float[b, 3];
-            for (int i = 0; i < b; i++)
+            for (int i = b - 1; i < b; i++)
             {
-
-                positionLHand[i, 0] = leftPlayerInterection.GetComponent<Transform>().position.x;
-                Debug.Log("X: " + positionLHand[i, 0]+" * "+ i);
-
-                positionLHand[i, 1] = leftPlayerInterection.GetComponent<Transform>().position.y;
-                Debug.Log("Y: " + positionLHand[i, 1] + " * " + i);
-                positionLHand[i, 2] = leftPlayerInterection.GetComponent<Transform>().position.z;
-                Debug.Log("Z: " + positionLHand[i, 2] + " * " + i);
+                ArrayOfGesture(i);
             }
             b++;
-            //ArrayOfGesture();
+            Debug.Log(b+"QQQQQQQQQQQQQQQQ");
 
-        }
-        
+        }/*
+        else if (recordingGesture == false && HaveRecordGesture == true)
+        {
+            if (curentFrame == positionLHand.Length)
+            {
+                curentFrame = 0;
+            }
+            else { curentFrame++; }
+            
+            SendValueOfGesture();
+
+
+
+        }*/
+
+
 
     }
 
-    void ArrayOfGesture()
+    void ArrayOfGesture(int frame)
     {
-        float[,] positionLHand = new float[b, 3];
-        positionLHand[b, 0] = leftPlayerInterection.GetComponent<Transform>().position.x;
-        Debug.Log("X: " + positionLHand[b, 0]);
+        //float[,] positionLHand = new float[b, 3];
+        //positionLHand[b, 0] = leftPlayerInterection.GetComponent<Transform>().position.x;
+        //Debug.Log("X: " + positionLHand[b, 0]);
 
-        positionLHand[b, 1] = leftPlayerInterection.GetComponent<Transform>().position.y;
-        Debug.Log("Y: " + positionLHand[b, 1]);
-        positionLHand[b, 2] = leftPlayerInterection.GetComponent<Transform>().position.z;
-        Debug.Log("Z: " + positionLHand[b, 2]);
+        //positionLHand[b, 1] = leftPlayerInterection.GetComponent<Transform>().position.y;
+        //Debug.Log("Y: " + positionLHand[b, 1]);
+        //positionLHand[b, 2] = leftPlayerInterection.GetComponent<Transform>().position.z;
+        //Debug.Log("Z: " + positionLHand[b, 2]);
 
-        b++;
+        //b++;
+        
+        Debug.Log(frame);
+        //for (int i = b - 1; i < b; i++)
+        //{
+        //    posX[i] = leftPlayerInterection.GetComponent<Transform>().position.x;
+        //    Debug.Log("X: " + posX[i] + " * " + i);
+        positionLHand[frame, 0] = left.GetComponent<Transform>().position.x;
+        Debug.Log("X: " + positionLHand[frame, 0] + " * " + frame);
+        positionLHand[frame, 1] = left.GetComponent<Transform>().position.y;
+        Debug.Log("Y: " + positionLHand[frame, 1] + " * " + frame);
+        positionLHand[frame, 2] = left.GetComponent<Transform>().position.z;
+        Debug.Log("Z: " + positionLHand[frame, 2] + " * " + frame);
+        //}
+
+
+        Debug.Log("eee");
+
     }
+
+    void SendValueOfGesture()
+    {
+
+        Debug.Log("sss");
+        for (int i = positionLHand.Length - curentFrame; i > 0; i--)
+        {
+            leftMentu.transform.position = new Vector3(positionLHand[i, 0], positionLHand[i, 1], positionLHand[i, 2]);
+        }
+
+
+    }
+
+
+
     private void OnTriggerEnter(Collider collider)
     {
         //If there is a microphone  
@@ -203,6 +257,7 @@ public class MentuBehavior : MonoBehaviour
         yield return new WaitForSeconds(3);//time for recording motion gesture
         recordingGesture = false;
         NoticeGestureRecording.SetActive(false);//UI notice recording motion gesture
+        HaveRecordGesture = true;//we have record gesture
         yield return new WaitForSeconds(0.5f);
         this.goAudioSource.Play(); //Play the recorded audio
         Debug.Log(goAudioSource.time);// curent time position
